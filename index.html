@@ -23,6 +23,8 @@
     --activity: #b0742f;
     --activity-soft: #fbeed6;
     --activity-ink: #7a4e18;
+    --danger: #d9483b;
+    --danger-soft: #fde8e7;
     --radius: 16px;
   }
 
@@ -89,10 +91,10 @@
   .title-group h1 { font-size: 27px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 3px; }
   .title-group p { margin: 0; color: var(--ink-muted); font-size: 15px; }
 
-  .header-right { display: flex; align-items: center; gap: 14px; }
+  .header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .today { font-size: 13px; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 6px; }
 
-  .btn-history {
+  .btn-history, .btn-admin {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -102,8 +104,30 @@
     padding: 9px 14px 9px 12px;
     box-shadow: inset 0 0 0 1px var(--line-strong);
   }
-  .btn-history:hover { background: var(--accent-soft); box-shadow: inset 0 0 0 1px rgba(176, 116, 47, 0.32); }
-  .btn-history svg { color: var(--accent); }
+  .btn-history:hover, .btn-admin:hover { background: var(--accent-soft); box-shadow: inset 0 0 0 1px rgba(176, 116, 47, 0.32); }
+  .btn-history svg, .btn-admin svg { color: var(--accent); }
+
+  /* 관리자 모드 활성화 시 버튼 스타일 */
+  .btn-admin.active {
+    background: var(--danger);
+    color: #fff;
+    box-shadow: none;
+  }
+  .btn-admin.active svg { color: #fff; }
+
+  .admin-indicator {
+    display: none;
+    background: var(--danger-soft);
+    color: var(--danger);
+    border: 1px solid rgba(217, 72, 59, 0.3);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 12px 0 4px;
+    text-align: center;
+  }
+  body.admin-mode .admin-indicator { display: block; }
 
   .legend {
     display: flex;
@@ -208,6 +232,16 @@
   .act-attend .cnt { opacity: 0.85; }
   .act-activity { background: var(--activity-soft); color: var(--activity-ink); box-shadow: inset 0 0 0 1px rgba(176, 116, 47, 0.18); }
   .act-activity:hover { background: #f7e2c1; }
+
+  /* 관리자 모드일 때 버튼 색상 변경 */
+  body.admin-mode .act-attend {
+    background: #d9483b !important;
+  }
+  body.admin-mode .act-activity {
+    background: #fde8e7 !important;
+    color: #b3392d !important;
+    box-shadow: inset 0 0 0 1px rgba(217, 72, 59, 0.25) !important;
+  }
 
   .footer-bar {
     display: flex;
@@ -332,6 +366,13 @@
       </div>
       <div class="header-right">
         <div class="today" id="today"></div>
+        <button class="btn-admin" id="toggleAdminBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          관리자
+        </button>
         <button class="btn-history" id="openHistory">
           <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
@@ -340,6 +381,10 @@
         </button>
       </div>
     </header>
+
+    <div class="admin-indicator" id="adminNotice">
+      ⚠️ 관리자 차감 모드 활성화 중: 버튼을 누르면 점수가 -1점 또는 -2점 차감됩니다.
+    </div>
 
     <div class="legend">
       <div><span class="dot attend"></span> 출석 체크 &nbsp;·&nbsp; 1점</div>
@@ -403,7 +448,10 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
-  // 실제 발급받으신 Firebase 설정 키 적용
+  // 🔑 관리자 비밀번호 (필요시 변경하세요)
+  const ADMIN_PASSWORD = "1234";
+  let isAdminMode = false;
+
   const firebaseConfig = {
     apiKey: "AIzaSyCKHlF9MrMiRzsBNWlhfghgWib8JUvy7NE",
     authDomain: "morning-readin.firebaseapp.com",
@@ -450,8 +498,8 @@
   function normalizeRec(s) {
     s = s || {};
     const rec = emptyRec();
-    rec.attend = Number.isFinite(s.attend) ? s.attend : 0;
-    ACTIVITY_KEYS.forEach((k) => { rec[k] = Number.isFinite(s[k]) ? s[k] : 0; });
+    rec.attend = Number.isFinite(s.attend) ? Math.max(0, s.attend) : 0;
+    ACTIVITY_KEYS.forEach((k) => { rec[k] = Number.isFinite(s[k]) ? Math.max(0, s[k]) : 0; });
     return rec;
   }
   function activityCount(rec) {
@@ -493,7 +541,6 @@
   let data = { totals: blankTotals(), byDate: {} };
   let currentGrade = null;
 
-  // 실시간 온라인 동기화
   dbRef.on("value", (snapshot) => {
     const val = snapshot.val();
     data = hydrate(val);
@@ -527,11 +574,34 @@
   const totalPointsEl = document.getElementById("totalPoints");
   const totalAttendEl = document.getElementById("totalAttend");
   const totalActivityEl = document.getElementById("totalActivity");
+  const toggleAdminBtn = document.getElementById("toggleAdminBtn");
 
   document.getElementById("today").textContent = (() => {
     const n = new Date();
     return n.getFullYear() + "년 " + (n.getMonth() + 1) + "월 " + n.getDate() + "일";
   })();
+
+  // 🔒 관리자 모드 토글
+  toggleAdminBtn.addEventListener("click", () => {
+    if (!isAdminMode) {
+      const pw = prompt("관리자 비밀번호를 입력하세요:");
+      if (pw === ADMIN_PASSWORD) {
+        isAdminMode = true;
+        document.body.classList.add("admin-mode");
+        toggleAdminBtn.classList.add("active");
+        toggleAdminBtn.innerHTML = "차감 모드 켜짐";
+        if (currentGrade) buildStudentCards(currentGrade);
+      } else if (pw !== null) {
+        alert("비밀번호가 올바르지 않습니다.");
+      }
+    } else {
+      isAdminMode = false;
+      document.body.classList.remove("admin-mode");
+      toggleAdminBtn.classList.remove("active");
+      toggleAdminBtn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> 관리자`;
+      if (currentGrade) buildStudentCards(currentGrade);
+    }
+  });
 
   function gradePoints(grade) {
     return ROSTER[grade].reduce((sum, name) => sum + points(data.totals[keyOf(grade, name)]), 0);
@@ -563,11 +633,14 @@
 
   function buildStudentCards(grade) {
     grid.innerHTML = "";
+    const sign = isAdminMode ? "-2" : "+2";
+    const attendSign = isAdminMode ? "-1" : "+1";
+
     ROSTER[grade].forEach((name) => {
       const k = keyOf(grade, name);
       const activityButtons = ACTIVITIES.map((a) =>
         `<button class="act-btn act-activity" data-action="${a.key}" data-key="${k}">
-          ${a.label} +2
+          ${a.label} ${sign}
           <span class="cnt"><b data-count="${k}:${a.key}">0</b>회</span>
         </button>`
       ).join("");
@@ -581,7 +654,7 @@
         </div>
         <div class="actions">
           <button class="act-btn act-attend" data-action="attend" data-key="${k}">
-            <span>출석 체크 +1</span>
+            <span>출석 ${isAdminMode ? "차감 -1" : "체크 +1"}</span>
             <span class="cnt"><b data-count="${k}:attend">0</b>회</span>
           </button>
           ${activityButtons}
@@ -589,6 +662,7 @@
       `;
       grid.appendChild(card);
     });
+    renderStudents();
   }
 
   function renderStudents(bumpKey) {
@@ -647,6 +721,7 @@
 
   document.getElementById("backBtn").addEventListener("click", backToGrades);
 
+  // 클릭 이벤트 (일반: +1 / 관리자 모드: -1)
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-action]");
     if (!btn) return;
@@ -657,8 +732,19 @@
     const date = todayKey();
     if (!data.byDate[date]) data.byDate[date] = blankTotals();
 
-    data.totals[k][action] += 1;
-    data.byDate[date][k][action] += 1;
+    if (isAdminMode) {
+      // 차감 모드: 0보다 클 때만 감소
+      if (data.totals[k][action] > 0) {
+        data.totals[k][action] -= 1;
+      }
+      if (data.byDate[date][k][action] > 0) {
+        data.byDate[date][k][action] -= 1;
+      }
+    } else {
+      // 일반 모드: 증가
+      data.totals[k][action] += 1;
+      data.byDate[date][k][action] += 1;
+    }
 
     saveData();
     renderStudents(k);
@@ -666,6 +752,11 @@
 
   document.getElementById("resetBtn").addEventListener("click", () => {
     if (!currentGrade) return;
+    const pw = prompt("관리자 비밀번호를 입력해야 초기화할 수 있습니다:");
+    if (pw !== ADMIN_PASSWORD) {
+      alert("비밀번호가 올바르지 않습니다.");
+      return;
+    }
     if (!confirm(currentGrade + " 학생들의 모든 기록을 초기화할까요?")) return;
     ROSTER[currentGrade].forEach((name) => {
       const k = keyOf(currentGrade, name);
