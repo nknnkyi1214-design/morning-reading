@@ -39,7 +39,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* ---------- Ambient morning backdrop ---------- */
   .backdrop {
     position: fixed;
     inset: 0;
@@ -62,13 +61,8 @@
     opacity: 0.96;
   }
 
-  .wrap {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 32px 20px 64px;
-  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 64px; }
 
-  /* ---------- Header ---------- */
   header {
     display: flex;
     align-items: flex-start;
@@ -92,23 +86,11 @@
   }
   .brand-mark svg { color: var(--accent); }
 
-  .title-group h1 {
-    font-size: 27px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin: 0 0 3px;
-  }
+  .title-group h1 { font-size: 27px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 3px; }
   .title-group p { margin: 0; color: var(--ink-muted); font-size: 15px; }
 
   .header-right { display: flex; align-items: center; gap: 14px; }
-
-  .today {
-    font-size: 13px;
-    color: var(--ink-faint);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-    padding-top: 6px;
-  }
+  .today { font-size: 13px; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 6px; }
 
   .btn-history {
     display: inline-flex;
@@ -123,7 +105,6 @@
   .btn-history:hover { background: var(--accent-soft); box-shadow: inset 0 0 0 1px rgba(176, 116, 47, 0.32); }
   .btn-history svg { color: var(--accent); }
 
-  /* ---------- Legend ---------- */
   .legend {
     display: flex;
     gap: 10px 20px;
@@ -142,14 +123,7 @@
   .dot.attend { background: var(--attend); }
   .dot.activity { background: var(--activity); }
 
-  /* ---------- Step nav ---------- */
-  .stepbar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0 22px;
-  }
-
+  .stepbar { display: flex; align-items: center; gap: 12px; margin: 20px 0 22px; }
   .btn-back {
     display: inline-flex;
     align-items: center;
@@ -161,24 +135,10 @@
     box-shadow: inset 0 0 0 1px var(--line-strong);
   }
   .btn-back:hover { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink-faint); }
-
   .step-title { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
-  .step-title .chip {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
+  .step-title .chip { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
 
-  /* ---------- Grade grid ---------- */
-  .grade-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 16px;
-  }
-
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
   .grade-card {
     position: relative;
     background: var(--g-soft, var(--surface));
@@ -194,38 +154,16 @@
     transition: box-shadow 200ms ease, transform 120ms ease;
     font-family: inherit;
   }
-  .grade-card::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    background: var(--g-ink, var(--accent));
-  }
-  .grade-card:hover {
-    box-shadow: 0 8px 22px rgba(60, 45, 30, 0.12), inset 0 0 0 1px var(--g-line, var(--line-strong));
-    transform: translateY(-3px);
-  }
+  .grade-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--g-ink, var(--accent)); }
+  .grade-card:hover { box-shadow: 0 8px 22px rgba(60, 45, 30, 0.12), inset 0 0 0 1px var(--g-line, var(--line-strong)); transform: translateY(-3px); }
   .grade-card:active { transform: translateY(0); }
   .grade-card:focus-visible { outline: 2px solid var(--g-ink, var(--accent)); outline-offset: 2px; }
 
-  .grade-num {
-    font-size: 23px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--g-ink, var(--ink));
-  }
+  .grade-num { font-size: 23px; font-weight: 600; letter-spacing: -0.02em; color: var(--g-ink, var(--ink)); }
   .grade-meta { font-size: 13px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
   .grade-meta .pt { color: var(--g-ink, var(--accent-ink)); font-weight: 600; }
 
-  /* ---------- Student grid ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 16px;
-  }
-
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
   .card {
     background: var(--surface);
     border-radius: var(--radius);
@@ -237,15 +175,8 @@
     transition: box-shadow 200ms ease;
   }
   .card:hover { box-shadow: 0 4px 14px rgba(60, 45, 30, 0.1), inset 0 0 0 1px var(--line-strong); }
-
-  .card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .name { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-
   .score {
     font-size: 15px;
     font-weight: 600;
@@ -258,7 +189,6 @@
   }
 
   .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
-
   button {
     font-family: inherit;
     cursor: pointer;
@@ -271,43 +201,14 @@
   button:active { transform: scale(0.97); }
   button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .act-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-    padding: 9px 12px;
-    font-size: 14px;
-    line-height: 1.15;
-  }
-  .act-btn .cnt {
-    font-size: 12px;
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-    opacity: 0.8;
-  }
-
-  .act-attend {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--attend);
-    color: #fff;
-    font-size: 15px;
-    padding: 11px 14px;
-  }
+  .act-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 9px 12px; font-size: 14px; line-height: 1.15; }
+  .act-btn .cnt { font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; opacity: 0.8; }
+  .act-attend { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; background: var(--attend); color: #fff; font-size: 15px; padding: 11px 14px; }
   .act-attend:hover { background: #256456; }
   .act-attend .cnt { opacity: 0.85; }
-
-  .act-activity {
-    background: var(--activity-soft);
-    color: var(--activity-ink);
-    box-shadow: inset 0 0 0 1px rgba(176, 116, 47, 0.18);
-  }
+  .act-activity { background: var(--activity-soft); color: var(--activity-ink); box-shadow: inset 0 0 0 1px rgba(176, 116, 47, 0.18); }
   .act-activity:hover { background: #f7e2c1; }
 
-  /* ---------- Footer bar ---------- */
   .footer-bar {
     display: flex;
     align-items: center;
@@ -320,18 +221,9 @@
   }
   .total-note { font-size: 14px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
   .total-note strong { color: var(--ink); font-weight: 600; }
-
-  .btn-reset {
-    background: transparent;
-    color: var(--ink-muted);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 8px 14px;
-    box-shadow: inset 0 0 0 1px var(--line-strong);
-  }
+  .btn-reset { background: transparent; color: var(--ink-muted); font-size: 13px; font-weight: 500; padding: 8px 14px; box-shadow: inset 0 0 0 1px var(--line-strong); }
   .btn-reset:hover { background: #fff; color: #b3402a; box-shadow: inset 0 0 0 1px rgba(179, 64, 42, 0.32); }
 
-  /* ---------- Modal ---------- */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -345,7 +237,6 @@
     animation: fade 160ms ease;
   }
   .modal-overlay[hidden] { display: none; }
-
   .modal {
     background: var(--surface);
     width: 100%;
@@ -355,37 +246,12 @@
     animation: pop 180ms ease;
     overflow: hidden;
   }
-
-  .modal-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 20px 22px 16px;
-    border-bottom: 1px solid var(--line);
-  }
+  .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 22px 16px; border-bottom: 1px solid var(--line); }
   .modal-head h2 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
-
-  .btn-close {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    color: var(--ink-muted);
-    padding: 6px;
-    border-radius: 8px;
-  }
+  .btn-close { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--ink-muted); padding: 6px; border-radius: 8px; }
   .btn-close:hover { background: var(--bg); color: var(--ink); }
 
-  .modal-toolbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 22px;
-    font-size: 14px;
-    color: var(--ink-muted);
-    flex-wrap: wrap;
-  }
+  .modal-toolbar { display: flex; align-items: center; gap: 10px; padding: 16px 22px; font-size: 14px; color: var(--ink-muted); flex-wrap: wrap; }
   .modal-toolbar label { font-weight: 500; }
   .modal-toolbar select {
     font-family: inherit;
@@ -404,16 +270,8 @@
   .modal-toolbar .sel-date { flex: 1; }
 
   .modal-body { padding: 4px 22px 24px; max-height: 60vh; overflow-y: auto; }
-
   .hist-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .hist-table th {
-    text-align: left;
-    font-weight: 500;
-    color: var(--ink-muted);
-    padding: 8px 8px 10px;
-    border-bottom: 1px solid var(--line-strong);
-    white-space: nowrap;
-  }
+  .hist-table th { text-align: left; font-weight: 500; color: var(--ink-muted); padding: 8px 8px 10px; border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
   .hist-table th.num, .hist-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
   .hist-table td { padding: 11px 8px; border-bottom: 1px solid var(--line); }
   .hist-table tr:last-child td { border-bottom: none; }
@@ -421,32 +279,13 @@
   .hist-table .row-grade { color: var(--ink-faint); font-size: 13px; white-space: nowrap; }
   .hist-table .row-points { font-weight: 600; color: var(--accent-ink); }
   .hist-table .zero { color: var(--ink-faint); }
-
-  .hist-empty {
-    text-align: center;
-    color: var(--ink-faint);
-    font-size: 14px;
-    padding: 40px 0;
-    line-height: 1.7;
-  }
+  .hist-empty { text-align: center; color: var(--ink-faint); font-size: 14px; padding: 40px 0; line-height: 1.7; }
 
   @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pop {
-    from { opacity: 0; transform: translateY(8px) scale(0.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes bump {
-    0% { transform: scale(1); }
-    40% { transform: scale(1.18); }
-    100% { transform: scale(1); }
-  }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes bump { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
   .score.bump { animation: bump 320ms ease; }
-
   [hidden] { display: none !important; }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
-  }
 
   @media (max-width: 480px) {
     .wrap { padding: 24px 16px 48px; }
@@ -456,8 +295,6 @@
     .header-right { width: 100%; justify-content: space-between; }
     .modal-overlay { padding: 20px 12px; }
     .modal-toolbar .sel-date { flex: 1 1 100%; }
-    .backdrop .sun { width: 220px; height: 220px; }
-    .backdrop .readers { width: 150%; opacity: 0.9; }
   }
 </style>
 </head>
@@ -475,90 +312,7 @@
     </svg>
     <svg class="readers" viewBox="0 0 1080 300" preserveAspectRatio="xMidYMax meet" fill="none">
       <ellipse cx="540" cy="286" rx="470" ry="20" fill="#cfe0cc" opacity="0.55" />
-
       <path d="M300 274 Q540 250 780 274 L810 292 Q540 272 270 292 Z" fill="#f3d9b0" opacity="0.7" />
-
-      <!-- potted plant (left) -->
-      <g transform="translate(150 196)">
-        <path d="M22 42 Q4 20 10 -2 Q20 16 24 34 Q28 6 40 -12 Q40 16 30 40 Q46 14 62 6 Q54 30 38 46 Z" fill="#8bbf8f" />
-        <path d="M14 42 h44 l-6 40 h-32 Z" fill="#c9793f" />
-        <path d="M14 42 h44 l-2 12 h-40 Z" fill="#b76a34" />
-      </g>
-
-      <!-- bookshelf / book stack (right) -->
-      <g transform="translate(852 210)">
-        <rect x="0" y="52" width="120" height="14" rx="3" fill="#b8703a" />
-        <rect x="6" y="36" width="108" height="16" rx="3" fill="#7fae9c" />
-        <rect x="2" y="20" width="116" height="16" rx="3" fill="#e2a95a" />
-        <rect x="12" y="4" width="96" height="16" rx="3" fill="#cf8f6f" />
-        <g stroke="#ffffff" stroke-width="2" opacity="0.5">
-          <path d="M60 40 v8 M60 24 v8 M60 8 v8 M60 56 v8" />
-        </g>
-      </g>
-
-      <!-- Child 1 — girl, teal dress, holding open book -->
-      <g transform="translate(360 150)">
-        <ellipse cx="30" cy="132" rx="46" ry="10" fill="#cbdcc7" opacity="0.5" />
-        <path d="M-6 132 Q-10 84 22 78 L46 78 Q78 86 70 132 Z" fill="#2f8f7d" />
-        <rect x="14" y="70" width="34" height="22" rx="10" fill="#f2c9a0" />
-        <circle cx="31" cy="44" r="27" fill="#f6d3ad" />
-        <path d="M4 44 Q2 8 31 8 Q60 8 58 44 Q58 30 44 26 Q40 40 31 38 Q22 40 18 26 Q4 30 4 44 Z" fill="#5b3b2a" />
-        <circle cx="22" cy="46" r="2.6" fill="#3a2a20" />
-        <circle cx="40" cy="46" r="2.6" fill="#3a2a20" />
-        <path d="M26 56 Q31 60 36 56" stroke="#c26a4a" stroke-width="2.4" stroke-linecap="round" />
-        <path d="M-4 96 Q-24 108 -10 128" stroke="#2f8f7d" stroke-width="16" stroke-linecap="round" />
-        <path d="M66 96 Q86 108 72 128" stroke="#2f8f7d" stroke-width="16" stroke-linecap="round" />
-        <g transform="translate(31 118)">
-          <path d="M-40 0 Q-18 -10 0 -2 Q18 -10 40 0 L36 26 Q18 18 0 24 Q-18 18 -36 26 Z" fill="#fbf3e2" />
-          <path d="M0 -2 V24" stroke="#d9c9a6" stroke-width="2.4" />
-          <path d="M-30 6 h20 M-30 12 h18 M10 6 h20 M12 12 h18" stroke="#cdbb95" stroke-width="1.6" stroke-linecap="round" />
-        </g>
-      </g>
-
-      <!-- Child 2 — boy, orange shirt, book upright (center, slightly taller) -->
-      <g transform="translate(500 128)">
-        <ellipse cx="34" cy="150" rx="50" ry="11" fill="#cbdcc7" opacity="0.5" />
-        <path d="M-2 150 Q-8 96 30 90 L40 90 Q80 98 72 150 Z" fill="#dd8a3e" />
-        <rect x="22" y="82" width="26" height="20" rx="9" fill="#e9b487" />
-        <circle cx="35" cy="52" r="29" fill="#eeb98a" />
-        <path d="M6 50 Q4 12 35 12 Q66 12 64 50 Q60 34 35 32 Q10 34 6 50 Z" fill="#2f2620" />
-        <circle cx="25" cy="54" r="2.8" fill="#2f2620" />
-        <circle cx="45" cy="54" r="2.8" fill="#2f2620" />
-        <path d="M30 64 Q35 69 40 64" stroke="#b45c3c" stroke-width="2.6" stroke-linecap="round" />
-        <path d="M2 108 Q-10 124 8 134" stroke="#dd8a3e" stroke-width="17" stroke-linecap="round" />
-        <path d="M68 108 Q80 124 62 134" stroke="#dd8a3e" stroke-width="17" stroke-linecap="round" />
-        <g transform="translate(35 128)">
-          <rect x="-34" y="-4" width="68" height="42" rx="4" fill="#7fae9c" />
-          <rect x="-30" y="0" width="30" height="34" rx="2" fill="#f7f0df" />
-          <rect x="0" y="0" width="30" height="34" rx="2" fill="#fbf6ea" />
-          <path d="M0 -4 V38" stroke="#5f8f7e" stroke-width="3" />
-          <path d="M-24 8 h18 M-24 14 h16 M6 8 h18 M6 14 h16" stroke="#cfc0a0" stroke-width="1.5" stroke-linecap="round" />
-        </g>
-      </g>
-
-      <!-- Child 3 — girl, plum dress, lying propped, reading -->
-      <g transform="translate(640 168)">
-        <ellipse cx="60" cy="112" rx="66" ry="10" fill="#cbdcc7" opacity="0.5" />
-        <path d="M96 116 Q120 96 100 78 L34 74 Q-2 80 6 116 Z" fill="#9d6aa6" />
-        <circle cx="30" cy="58" r="25" fill="#f4cfa8" />
-        <path d="M6 58 Q4 26 30 26 Q56 26 54 58 Q54 40 44 36 L44 60 Q30 66 16 60 L16 36 Q6 40 6 58 Z" fill="#6b4a34" />
-        <circle cx="38" cy="58" r="2.5" fill="#3a2a20" />
-        <circle cx="24" cy="58" r="2.5" fill="#3a2a20" />
-        <path d="M26 67 Q31 71 36 67" stroke="#c26a4a" stroke-width="2.2" stroke-linecap="round" />
-        <path d="M18 84 Q6 104 20 116" stroke="#9d6aa6" stroke-width="15" stroke-linecap="round" />
-        <g transform="translate(72 104)">
-          <path d="M-34 0 Q-16 -8 0 -2 Q16 -8 34 0 L30 22 Q16 16 0 20 Q-16 16 -30 22 Z" fill="#fbf3e2" />
-          <path d="M0 -2 V20" stroke="#d9c9a6" stroke-width="2" />
-          <path d="M-26 6 h16 M-26 11 h14 M10 6 h16 M12 11 h14" stroke="#cdbb95" stroke-width="1.4" stroke-linecap="round" />
-        </g>
-      </g>
-
-      <g fill="#f4cf7e" opacity="0.85">
-        <path d="M300 70 l4 8 8 4 -8 4 -4 8 -4 -8 -8 -4 8 -4 Z" />
-        <path d="M792 96 l3 6 6 3 -6 3 -3 6 -3 -6 -6 -3 6 -3 Z" opacity="0.7" />
-        <circle cx="470" cy="60" r="3" />
-        <circle cx="700" cy="52" r="2.4" opacity="0.7" />
-      </g>
     </svg>
   </div>
 
@@ -592,7 +346,6 @@
       <div><span class="dot activity"></span> 독후감 · 도서대여 · 책 읽어주기 &nbsp;·&nbsp; 각 2점</div>
     </div>
 
-    <!-- ---------- 1단계: 학년 선택 ---------- -->
     <section id="screenGrade">
       <div class="stepbar">
         <span class="step-title">학년을 선택하세요</span>
@@ -600,7 +353,6 @@
       <div class="grade-grid" id="gradeGrid"></div>
     </section>
 
-    <!-- ---------- 2단계: 학생 명단 ---------- -->
     <section id="screenStudents" hidden>
       <div class="stepbar">
         <button class="btn-back" id="backBtn">
@@ -625,7 +377,6 @@
     </section>
   </div>
 
-  <!-- ---------- 날짜별 기록 모달 ---------- -->
   <div class="modal-overlay" id="historyModal" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
       <div class="modal-head">
@@ -648,7 +399,25 @@
     </div>
   </div>
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 <script>
+  // 실제 발급받으신 Firebase 설정 키 적용
+  const firebaseConfig = {
+    apiKey: "AIzaSyCKHlF9MrMiRzsBNWlhfghgWib8JUvy7NE",
+    authDomain: "morning-readin.firebaseapp.com",
+    databaseURL: "https://morning-readin-default-rtdb.firebaseio.com",
+    projectId: "morning-readin",
+    storageBucket: "morning-readin.firebasestorage.app",
+    messagingSenderId: "673161520418",
+    appId: "1:673161520418:web:f983f99fb96bc0ea04f17b"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const dbRef = db.ref("morning_reading_data");
+
   const ROSTER = {
     "1학년": ["고세정", "김시준", "김아란", "문은지", "이도희", "장유준", "조하민", "허라온"],
     "2학년": ["권민", "김다솜", "조민서", "조민혁", "최서진"],
@@ -659,7 +428,6 @@
   };
   const GRADES = Object.keys(ROSTER);
 
-  // 학년별 색상 팔레트 (구분되는 뮤트 톤: soft 배경 / ink 강조 / line 테두리)
   const GRADE_COLORS = {
     "1학년": { soft: "#fbeede", ink: "#c0562f", line: "rgba(192,86,47,0.18)" },
     "2학년": { soft: "#fbf1d9", ink: "#b0742f", line: "rgba(176,116,47,0.18)" },
@@ -669,17 +437,12 @@
     "6학년": { soft: "#eee6f5", ink: "#7a56a8", line: "rgba(122,86,168,0.18)" },
   };
 
-  // 활동 항목: 출석(1점) + 독후감/도서대여/책읽어주기(각 2점)
   const ACTIVITIES = [
     { key: "reading", label: "독후감" },
     { key: "rental", label: "도서대여" },
     { key: "readaloud", label: "책 읽어주기" },
   ];
   const ACTIVITY_KEYS = ACTIVITIES.map((a) => a.key);
-
-  const STORAGE_KEY = "library-attendance-v3";
-  const LEGACY_V2 = "library-attendance-v2";
-  const LEGACY_V1 = "library-attendance-v1";
 
   function emptyRec() {
     return { attend: 0, reading: 0, rental: 0, readaloud: 0 };
@@ -706,31 +469,16 @@
     return t;
   }
 
-  // 저장 구조:
-  //   { totals:{"학년::이름":rec}, byDate:{"YYYY-MM-DD":{"학년::이름":rec}} }
-  //   rec = {attend, reading, rental, readaloud}
-  // 하위호환: v3 없으면 v2({attend,activity}) → activity를 독후감으로 이관, v2도 없으면 v1(1학년 이름만) 시도.
-  function loadData() {
-    let saved = null;
-    try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { saved = null; }
-    if (saved) return hydrate(saved);
-
-    const fromV2 = migrateFromV2();
-    if (fromV2) return fromV2;
-
-    return { totals: blankTotals(), byDate: {} };
-  }
-
   function hydrate(saved) {
     const totals = blankTotals();
-    if (saved.totals) {
+    if (saved && saved.totals) {
       GRADES.forEach((g) => ROSTER[g].forEach((name) => {
         const k = keyOf(g, name);
         totals[k] = normalizeRec(saved.totals[k]);
       }));
     }
     const byDate = {};
-    const savedByDate = saved.byDate && typeof saved.byDate === "object" ? saved.byDate : {};
+    const savedByDate = saved && saved.byDate && typeof saved.byDate === "object" ? saved.byDate : {};
     Object.keys(savedByDate).forEach((date) => {
       const day = blankTotals();
       GRADES.forEach((g) => ROSTER[g].forEach((name) => {
@@ -742,65 +490,26 @@
     return { totals, byDate };
   }
 
-  // v2 레코드({attend, activity})를 v3({attend, reading, ...})로: 기존 활동은 독후감으로 옮긴다.
-  function recFromV2(v2) {
-    const rec = emptyRec();
-    if (v2) {
-      rec.attend = Number.isFinite(v2.attend) ? v2.attend : 0;
-      rec.reading = Number.isFinite(v2.activity) ? v2.activity : 0;
+  let data = { totals: blankTotals(), byDate: {} };
+  let currentGrade = null;
+
+  // 실시간 온라인 동기화
+  dbRef.on("value", (snapshot) => {
+    const val = snapshot.val();
+    data = hydrate(val);
+    if (currentGrade) {
+      renderStudents();
+    } else {
+      renderGradeCards();
     }
-    return rec;
-  }
-
-  function migrateFromV2() {
-    let v2 = null;
-    try { v2 = JSON.parse(localStorage.getItem(LEGACY_V2)); } catch (e) { v2 = null; }
-    if (!v2) { v2 = liftV1ToV2(); }
-    if (!v2) return null;
-
-    const totals = blankTotals();
-    if (v2.totals) {
-      GRADES.forEach((g) => ROSTER[g].forEach((name) => {
-        const k = keyOf(g, name);
-        if (v2.totals[k]) totals[k] = recFromV2(v2.totals[k]);
-      }));
+    if (!historyModal.hidden) {
+      renderHistoryTable();
     }
-    const byDate = {};
-    const v2ByDate = v2.byDate && typeof v2.byDate === "object" ? v2.byDate : {};
-    Object.keys(v2ByDate).forEach((date) => {
-      const day = blankTotals();
-      GRADES.forEach((g) => ROSTER[g].forEach((name) => {
-        const k = keyOf(g, name);
-        if (v2ByDate[date][k]) day[k] = recFromV2(v2ByDate[date][k]);
-      }));
-      byDate[date] = day;
-    });
-    return { totals, byDate };
-  }
+  });
 
-  // v1(1학년 이름만 최상위 저장) → v2 형태({totals:{"1학년::이름"}})로 승격.
-  function liftV1ToV2() {
-    let v1 = null;
-    try { v1 = JSON.parse(localStorage.getItem(LEGACY_V1)); } catch (e) { return null; }
-    if (!v1) return null;
-    const oldTotals = v1.totals ? v1.totals : v1;
-    const totals = {};
-    ROSTER["1학년"].forEach((name) => {
-      if (oldTotals[name]) totals[keyOf("1학년", name)] = oldTotals[name];
-    });
-    const byDate = {};
-    const oldByDate = v1.byDate && typeof v1.byDate === "object" ? v1.byDate : {};
-    Object.keys(oldByDate).forEach((date) => {
-      const day = {};
-      ROSTER["1학년"].forEach((name) => {
-        if (oldByDate[date][name]) day[keyOf("1학년", name)] = oldByDate[date][name];
-      });
-      byDate[date] = day;
-    });
-    return { totals, byDate };
+  function saveData() {
+    dbRef.set(data);
   }
-
-  function saveData() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
 
   function todayKey() {
     const d = new Date();
@@ -808,9 +517,6 @@
     const dd = String(d.getDate()).padStart(2, "0");
     return d.getFullYear() + "-" + mm + "-" + dd;
   }
-
-  let data = loadData();
-  let currentGrade = null;
 
   const screenGrade = document.getElementById("screenGrade");
   const screenStudents = document.getElementById("screenStudents");
@@ -831,7 +537,6 @@
     return ROSTER[grade].reduce((sum, name) => sum + points(data.totals[keyOf(grade, name)]), 0);
   }
 
-  /* ---------- 1단계: 학년 카드 ---------- */
   function renderGradeCards() {
     gradeGrid.innerHTML = "";
     GRADES.forEach((grade) => {
@@ -856,7 +561,6 @@
     openGrade(btn.dataset.grade);
   });
 
-  /* ---------- 2단계: 학생 카드 ---------- */
   function buildStudentCards(grade) {
     grid.innerHTML = "";
     ROSTER[grade].forEach((name) => {
@@ -901,15 +605,18 @@
       totalAct += activityCount(rec);
 
       const scoreEl = grid.querySelector(`[data-score="${k}"]`);
-      scoreEl.textContent = p + "점";
-      grid.querySelector(`[data-count="${k}:attend"]`).textContent = rec.attend;
+      if (scoreEl) scoreEl.textContent = p + "점";
+      const attendCnt = grid.querySelector(`[data-count="${k}:attend"]`);
+      if (attendCnt) attendCnt.textContent = rec.attend;
+
       ACTIVITY_KEYS.forEach((ak) => {
-        grid.querySelector(`[data-count="${k}:${ak}"]`).textContent = rec[ak];
+        const actCnt = grid.querySelector(`[data-count="${k}:${ak}"]`);
+        if (actCnt) actCnt.textContent = rec[ak];
       });
 
-      if (bumpKey === k) {
+      if (bumpKey === k && scoreEl) {
         scoreEl.classList.remove("bump");
-        void scoreEl.offsetWidth; // 애니메이션 재시작을 위한 강제 리플로우
+        void scoreEl.offsetWidth;
         scoreEl.classList.add("bump");
       }
     });
@@ -959,7 +666,7 @@
 
   document.getElementById("resetBtn").addEventListener("click", () => {
     if (!currentGrade) return;
-    if (!confirm(currentGrade + " 학생들의 모든 기록(누적 · 날짜별)을 지울까요? 이 작업은 되돌릴 수 없어요.")) return;
+    if (!confirm(currentGrade + " 학생들의 모든 기록을 초기화할까요?")) return;
     ROSTER[currentGrade].forEach((name) => {
       const k = keyOf(currentGrade, name);
       data.totals[k] = emptyRec();
@@ -969,7 +676,6 @@
     renderStudents();
   });
 
-  /* ---------- 날짜별 기록 모달 ---------- */
   const historyModal = document.getElementById("historyModal");
   const dateSelect = document.getElementById("dateSelect");
   const gradeFilter = document.getElementById("gradeFilter");
@@ -1034,7 +740,7 @@
       historyModal.hidden = false;
       dateSelect.innerHTML = "";
       gradeFilter.innerHTML = "";
-      historyBody.innerHTML = '<div class="hist-empty">아직 기록된 날짜가 없어요.<br>학년을 골라 출석을 체크해 보세요.</div>';
+      historyBody.innerHTML = '<div class="hist-empty">아직 기록된 날짜가 없어요.</div>';
       return;
     }
     dateSelect.innerHTML = dates.map((d) => `<option value="${d}">${formatDateLabel(d)}</option>`).join("");
@@ -1054,8 +760,6 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !historyModal.hidden) closeHistory();
   });
-
-  renderGradeCards();
 </script>
 </body>
 </html>
