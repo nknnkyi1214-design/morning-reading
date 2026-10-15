@@ -540,7 +540,9 @@
 
   let data = { totals: blankTotals(), byDate: {} };
   let currentGrade = null;
-
+JavaScript
+renderGradeCards();
+  
   dbRef.on("value", (snapshot) => {
     const val = snapshot.val();
     data = hydrate(val);
